@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout_login.cshtml";
+}
+
+
+
+<div class="card">
+
+    <h5 class="card-header">
+        Login
+    </h5>
+    @if (TempData["Message"] != null)
+    {
+        <span class="text-danger"> @TempData["Message"] </span>
+    }
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <form method="post" action="Login">
+
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input for="usuario" name="usuario" type="text" class="form-control" maxlength="50" required  />
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="clave" class="form-label">Clave</label>
+                    <input for="clave" name="clave" type="text" class="form-control" minlenght="4" maxlength="50" required/>
+                    <span validation-for="clave" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-danger"> Cancelar</a>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
