@@ -18,7 +18,7 @@ namespace TP_Cripto.Datos
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand("ListarCuentaCliente", conexion);
-                cmd.Parameters.AddWithValue("idTitular", 1); //idCliente);
+                cmd.Parameters.AddWithValue("idTitular", idCliente);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var dr = cmd.ExecuteReader())

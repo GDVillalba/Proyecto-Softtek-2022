@@ -9,11 +9,11 @@
 <body class=" p-0 pb-5 m-0 main-bg ">
     <div class="ps-5 pe-5">
 
-        <div class="card mt-5 mb-5 ms-auto me-auto col-6">
+        <div class="card mt-5 mb-5 ms-auto me-auto col-12 col-sm-8 col-md-6">
 
-            <h5 class="card-header bg-dark" style="color:white">
+            <h2 class="card-header bg-dark" style="color:white">
                 @ViewData["Title"]
-            </h5>
+            </h2>
             @if (TempData["Message"] != null)
             {
                 <span class="text-danger"> @TempData["Message"] </span>
@@ -21,7 +21,7 @@
 
             @if (TempData["Exito"] != null)
             {
-                <span class="text-succes"> @TempData["Exito"] </span>
+                <h4 class="text-succes"> @TempData["Exito"] </h4>
             }
             else
             {
