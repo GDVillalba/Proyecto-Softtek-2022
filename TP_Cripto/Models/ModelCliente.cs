@@ -24,7 +24,6 @@ namespace TP_Cripto.Models
         public string? Telefono { get; set; }
 
         [DisplayName("Fecha de alta")]
-        [Required]
-        public DateOnly FechaAlta { get; set; }
+        public DateOnly? FechaAlta { get; set; }
     }
 }

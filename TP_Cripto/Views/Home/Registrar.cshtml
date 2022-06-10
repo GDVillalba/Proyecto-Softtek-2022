@@ -1,0 +1,72 @@
+﻿@model ModelCliente;
+
+@{
+    ViewData["Title"] = "Registrar";    
+    Layout = "~/Views/Shared/_Layout_login.cshtml";
+}
+
+
+<body class=" p-0 pb-5 m-0 main-bg ">
+    <div class="ps-5 pe-5">
+
+        <div class="card mt-5 mb-5 ms-auto me-auto col-6">
+
+            <h5 class="card-header bg-dark" style="color:white">
+                @ViewData["Title"]
+            </h5>
+            @if (TempData["Message"] != null)
+            {
+                <span class="text-danger"> @TempData["Message"] </span>
+            }
+
+            @if (TempData["Exito"] != null)
+            {
+                <span class="text-succes"> @TempData["Exito"] </span>
+            }
+            else
+            {
+                <div class="card-body" style="background-color:lightgray">
+
+                    <form method="post" asp-action="Registrar">
+
+                        <div class="mb-3">
+                            <label asp-for=Usuario class="form-label">Usuario</label>
+                            <input asp-for=Usuario type="text" class="form-control">
+                            <span asp-validation-for=Usuario class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for=Nombre class="form-label">Nombre</label>
+                            <input asp-for=Nombre type="text" class="form-control">
+                            <span asp-validation-for=Nombre class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for=Clave class="form-label">Clave</label>
+                            <input asp-for=Clave type="text" class="form-control">
+                            <span asp-validation-for=Clave class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for=Mail class="form-label">Mail</label>
+                            <input asp-for=Mail type="text" class="form-control">
+                            <span asp-validation-for=Mail class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for=Telefono class="form-label">Telefono</label>
+                            <input asp-for=Telefono type="text" class="form-control">
+                            <span asp-validation-for=Telefono class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-danger"> Cancelar</a>
+                    </form>
+
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+

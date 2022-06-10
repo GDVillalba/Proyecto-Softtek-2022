@@ -1,16 +1,20 @@
-create procedure ListarCuentaCliente(
+alter procedure ListarCuentaCliente(
 @idTitular int)
 as
 begin
-	select * from Cuenta where idTitular = @idTitular
+	SELECT C.id, C.idTitular, C.idMoneda, C.CBU_UUID, C.alias, C.numeroCuenta, C.saldo, C.descripcion, C.fechaAlta, M.nombre  
+	FROM Cuenta C INNER JOIN Moneda M ON M.Id = C.idMoneda 
+	WHERE C.idTitular=@idTitular
 end
 go
 
-create procedure ObtenerCuenta(
+alter procedure ObtenerCuenta(
 @id int)
 as
 begin
-	select * from Cuenta where id = @id
+	SELECT C.id, C.idTitular, C.idMoneda, C.CBU_UUID, C.alias, C.numeroCuenta, C.saldo, C.descripcion, C.fechaAlta, M.nombre  
+	FROM Cuenta C INNER JOIN Moneda M ON M.Id = C.idMoneda 
+	WHERE C.id=@id
 end
 go
 

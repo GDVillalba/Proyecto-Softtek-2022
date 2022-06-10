@@ -14,5 +14,60 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+*{
+    mask-border:alpha;
+    border-color:transparent;
+    border-style:none;
+    outline:none;
+    box-shadow:rgba(0,0,0,0) none;
+    border-bottom-style:none;
+    padding: 0px;
+    margin: 0px;
+}
+/******************************/
+
+#hero {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    width: 100%;
+}
+
+.hero-bg {
+    background-image: linear-gradient(rgba(200,250,200,.9), rgba(0,0,0,.9)), url('../images/CriptoBG.bmp');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.main-bg {
+    background-image: linear-gradient(rgba(200,200,200,.9), rgba(0,0,0,.9)), url('../images/CriptoBG.bmp');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin-bottom: 30em;
+    z-index: 0;
+}
+
+.celda-semana {
+    width: 8.25%;
+}
+
+
+@media (max-width: 850px) {
+    .celda-semana {
+        width: 16.5%;
+    }
+}
+
+@media (max-width: 650px) {
+    .celda-semana {
+        width: 33%;
+    }
 }

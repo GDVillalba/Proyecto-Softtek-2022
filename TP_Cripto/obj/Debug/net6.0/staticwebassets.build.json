@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e00HxM+HcnP/Fyx4MaWDXTr0SB64XqOv47vhhv+++1c=",
+  "Hash": "dOlQ515rdxHs/FibpFzvwtehbuSuMif6R6kGpaSux50=",
   "Source": "TP_Cripto",
   "BasePath": "_content/TP_Cripto",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "S:\\Curso .net Softek\\Proyecto Softtek\\Proyecto-Softtek-2022\\TP_Cripto\\wwwroot\\images\\CriptoBG.bmp",
+      "SourceId": "TP_Cripto",
+      "SourceType": "Discovered",
+      "ContentRoot": "S:\\Curso .net Softek\\Proyecto Softtek\\Proyecto-Softtek-2022\\TP_Cripto\\wwwroot\\",
+      "BasePath": "_content/TP_Cripto",
+      "RelativePath": "images/CriptoBG.bmp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\CriptoBG.bmp"
     },
     {
       "Identity": "S:\\Curso .net Softek\\Proyecto Softtek\\Proyecto-Softtek-2022\\TP_Cripto\\wwwroot\\js\\site.js",

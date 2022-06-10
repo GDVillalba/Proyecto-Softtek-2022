@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TP_Cripto.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body style="min-width:330px">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3 ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-0 ">
             <div class="container-fluid ">
 
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TP_Cripto</a>
@@ -24,6 +24,9 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cuenta" asp-action="Index">Cuenta</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
@@ -34,15 +37,15 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
                         </li>
                         <li class="nav-item me-0">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Registrarse</a> 
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Registrar">Registrarse</a> 
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div style="border-bottom: 0px solid #fff">
+        <main role="main" class="pb-0">
             @RenderBody()
         </main>
     </div>

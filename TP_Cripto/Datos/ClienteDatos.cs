@@ -135,7 +135,6 @@ namespace TP_Cripto.Datos
                     cmd.Parameters.AddWithValue("nombre", oCliente.Nombre);
                     cmd.Parameters.AddWithValue("mail", oCliente.Mail);
                     cmd.Parameters.AddWithValue("telefono", oCliente.Telefono);
-                    cmd.Parameters.AddWithValue("fechaAlta", oCliente.FechaAlta);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
