@@ -32,8 +32,8 @@ namespace TP_Cripto.Datos
                             Nombre = dr["nombre"].ToString(),
                             Mail = dr["mail"].ToString(),
                             Telefono = dr["telefono"].ToString(),
-                            FechaAlta = DateOnly.Parse(dr["fechaAlta"].ToString())
-                        });
+                            FechaAlta = DateOnly.Parse(Convert.ToDateTime(dr["fechaAlta"].ToString()).ToString("dd/MM/yyyy"))
+                    });
                     }
                 }
             }
@@ -64,7 +64,7 @@ namespace TP_Cripto.Datos
                         oCliente.Nombre = dr["nombre"].ToString();
                         oCliente.Mail = dr["mail"].ToString();
                         oCliente.Telefono = dr["telefono"].ToString();
-                        oCliente.FechaAlta = DateOnly.Parse( dr["fechaAlta"].ToString());
+                        oCliente.FechaAlta = DateOnly.Parse( Convert.ToDateTime( dr["fechaAlta"].ToString()).ToString("dd/MM/yyyy"));
                     }
                 }
 
@@ -104,8 +104,8 @@ namespace TP_Cripto.Datos
                         oCliente.Nombre = dr["nombre"].ToString();
                         oCliente.Mail = dr["mail"].ToString();
                         oCliente.Telefono = dr["telefono"].ToString();
-                        oCliente.FechaAlta = DateOnly.Parse(dr["fechaAlta"].ToString());
-                    }
+                        oCliente.FechaAlta = DateOnly.Parse(Convert.ToDateTime(dr["fechaAlta"].ToString()).ToString("dd/MM/yyyy"));
+                        }
                 }
 
             }

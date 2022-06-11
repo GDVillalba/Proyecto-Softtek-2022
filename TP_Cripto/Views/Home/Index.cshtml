@@ -21,19 +21,20 @@
     <h1>
       @ViewData["Title"]
     </h1>
+    <p> Este es un trabajo de practica sobre .NET. en el que se manejan clientes, y cuentas imaginarias de dinero.</p>
  
 
         </div>
     </div>
 </section>
 
-<section class=" d-flex flex-wrap p-5 m-0 justify-content-around" style="background-image: linear-gradient(rgba(100,110,100,.9), rgba(0,0,0,1));">
+<section class=" d-flex flex-column flex-md-row  flex-wrap p-5 m-auto justify-content-around" style="background-image: linear-gradient(rgba(100,110,100,.9), rgba(0,0,0,1));">
 
     @foreach (var item in Model)
     {
-        <div class="card rounded border-dark mb-2" style="width: 18rem;border-radius:3em">
-            <div class="card-body p-0 text-center">
-                <h5 class="card-title bg-dark p-3 text-light">@item.Nombre</h5>
+        <div class="flex-grow-1 flex-shrink-1 container rounded border-dark mb-2"  style="width: 18rem;" >
+            <div class=" p-0 text-center"  style="width: 18rem;border-radius:3em 3em 2em 2em ;background-color:white">
+                <h5 class=" bg-dark p-3 text-light"  style="border-radius: 2em 2em 0em 0em;">@item.Nombre</h5>
                 <h6 class="card-subtitle mb-2 p-1 text-muted">Cotizacion en USD</h6>
                 <ul class="card-text text-start pb-5 ">
                     <li>@item.CotizacionEnUSD</li>

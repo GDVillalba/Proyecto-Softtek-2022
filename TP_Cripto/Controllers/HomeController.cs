@@ -58,6 +58,53 @@ namespace TP_Cripto.Controllers
             return RedirectToAction();
         }
 
+        public IActionResult Perfil()
+        {
+            if (HttpContext.Session.GetString("usuario") == null)
+            {
+                HttpContext.Session.SetInt32("idCliente", 0);
+                HttpContext.Session.SetString("usuario", "");
+            }
+
+            //Get value from Session object.
+            ViewBag.Usuario = HttpContext.Session.GetString("usuario");
+
+            if (HttpContext.Session.GetString("usuario") != null && HttpContext.Session.GetString("usuario") != "")
+            {
+                var oCliente = clienteDatos.Obtener((int)Convert.ToInt32(HttpContext.Session.GetInt32("idCliente")));
+
+                if(oCliente.Usuario != "")
+                {                
+                    return View(oCliente);
+                }
+            }
+
+            TempData["Respuesta"] = new String("No hay un cliente para editar, ingrese al sistema");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Perfil(ModelCliente oCliente)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["Message"] = new String("Modelo invalido ");
+                return View();
+            }
+
+            var respuesta = clienteDatos.Editar(oCliente);
+
+            if (respuesta)
+            {
+                TempData["Respuesta"] = new String("Resgistrado con Exito");
+                return View();
+            }
+
+            TempData["Message"] = new String("Error al actualizar datos cliente ");
+
+            return View();
+        }
+
         //[HttpPost]
         public IActionResult Logout()
         {
