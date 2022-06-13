@@ -21,10 +21,10 @@ namespace TP_Cripto.Models
 
         public String? Alias { get; set; }
 
-        [Required]
+        
         public int NumeroCuenta { get; set; }
 
-        [Required]
+        
         public Decimal Saldo { get; set; }
 
         [Required]

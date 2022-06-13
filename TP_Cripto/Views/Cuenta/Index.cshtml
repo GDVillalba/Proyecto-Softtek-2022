@@ -4,12 +4,14 @@
     ViewData["Title"] = "Cuentas";
 }
 
+<partial name="~/Views/Shared/_Notification.cshtml" /> @*Partial view, added for notifications*@
 
 <body class=" p-0 pb-5 m-0 main-bg ">
     <div class="ps-5 pe-5 ">
 
         <div class="card col-md-10 m-auto " style="background:none; border:none">
             <h2 >@ViewData["Title"]</h2>
+            <p class="mess"></p>
         </div>
 
 
@@ -24,7 +26,7 @@
                     <h5 class="card-header">
                         Usuario: @ViewBag.Usuario
                     </h5>
-                    <button class="btn btn-light mt-2 mt-sm-2">Nueva Cuenta</button>
+                    <a asp-action="NuevaCuenta" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Nueva Cuenta</a>
                 </div>
 
             </div>
@@ -59,12 +61,12 @@
                                 <li>Saldo: @item.Saldo</li>
                             </ul>
                             </div>
-                            <button class="btn btn-light">Movimientos</button>
+                            <a asp-action="FaltaImplementar" asp-controller="Cuenta" class="btn btn-light">Movimientos</a>
                         </div>
                         <div class="  col-sm-2 d-flex flex-column flex-nowrap justify-content-evenly">
-                            <button class="btn btn-light mt-2 mt-sm-2" >Depositar</button>
-                            <button class="btn btn-light mt-2 mt-sm-2">Extraer</button>
-                            <button class="btn btn-light mt-2 mt-sm-2">Transferir</button>
+                            <a asp-action="FaltaImplementar" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2"> Depositar</a>
+                            <a asp-action="FaltaImplementar" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Extraer</a>
+                            <a asp-action="FaltaImplementar" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Transferir</a>
                         </div>
 
                     </div>

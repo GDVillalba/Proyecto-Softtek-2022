@@ -81,7 +81,7 @@ namespace TP_Cripto.Datos
         }
 
         //Create
-        public bool Guardar(ModelCuenta oCuenta)
+        public bool CrearCuenta(ModelCuenta oCuenta)
         {
             bool respuesta = false;
 
@@ -91,13 +91,10 @@ namespace TP_Cripto.Datos
                 using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     Conexion.Open();
-                    SqlCommand cmd = new SqlCommand("GuardarCuenta", Conexion);
+                    SqlCommand cmd = new SqlCommand("CrearCuenta", Conexion);
                     cmd.Parameters.AddWithValue("idTitular", oCuenta.IdTitular);
                     cmd.Parameters.AddWithValue("idMoneda", oCuenta.IdMoneda);
                     cmd.Parameters.AddWithValue("CBU_UUID", oCuenta.CBU_UUID);
-                    cmd.Parameters.AddWithValue("alias", oCuenta.Alias);
-                    cmd.Parameters.AddWithValue("numeroCuenta", oCuenta.NumeroCuenta);
-                    cmd.Parameters.AddWithValue("saldo", oCuenta.Saldo);
                     cmd.Parameters.AddWithValue("descripcion", oCuenta.Descripcion);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
@@ -142,5 +139,49 @@ namespace TP_Cripto.Datos
 
             return respuesta;
         }
+
+        public bool DisponibleCBU_UUID(string CBU_UUID )
+        {
+            if (CBU_UUID == null)
+                CBU_UUID = "";
+
+            bool respuesta = false;
+
+            var oCuenta = new ModelCuenta();
+            oCuenta.Id = 0;
+
+            try
+            {
+                //Conexion
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("ValidarCUB_UUID", conexion);
+                    cmd.Parameters.AddWithValue("CUB_UUID", CBU_UUID);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            oCuenta.Id = Convert.ToInt32(dr["id"]);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
+
+            if (oCuenta.Id == 0)
+                respuesta = true;
+
+            return respuesta;
+        }
+
     }
 }

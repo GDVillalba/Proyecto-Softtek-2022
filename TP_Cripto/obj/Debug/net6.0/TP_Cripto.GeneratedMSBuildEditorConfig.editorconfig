@@ -19,6 +19,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/NuevaCuenta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXE51ZXZhQ3VlbnRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/NuevaCuenta2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXE51ZXZhQ3VlbnRhMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -41,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/_ValidationScriptsPartial.cshtml]

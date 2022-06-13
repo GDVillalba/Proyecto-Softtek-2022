@@ -63,3 +63,66 @@ begin
 	update Cuenta set saldo=@saldo where id=@id
 end
 go
+
+
+
+GO
+CREATE PROCEDURE CrearCuenta
+(
+     @idTitular int
+    , @idMoneda int
+    , @CBU_UUID varchar(50)
+	, @descripcion varchar(50)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    SAVE TRANSACTION MySavePoint;
+
+    BEGIN TRY
+        INSERT INTO Cuenta
+            (
+            idTitular
+            ,idMoneda
+            ,CBU_UUID
+            ,descripcion
+            )
+        VALUES (
+            @idTitular
+            , @idMoneda
+            , @CBU_UUID
+            , @descripcion
+            );
+		
+		UPDATE Cuenta 
+        SET numeroCuenta = id 
+        WHERE (CBU_UUID = @CBU_UUID);
+
+        COMMIT TRANSACTION 
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+        BEGIN
+            ROLLBACK TRANSACTION MySavePoint; -- rollback to MySavePoint
+        END
+    END CATCH
+END;
+GO
+
+create procedure ValidarCUB_UUID(
+@CUB_UUID varchar(50)
+)
+as
+begin
+	select * from Cuenta where CBU_UUID = @CUB_UUID
+end
+go
+
+create procedure ValidarAlias(
+@alias varchar(50)
+)
+as
+begin
+	select * from Cuenta where alias = @alias
+end
+go
