@@ -36,7 +36,8 @@ namespace TP_Cripto.Datos
                             NumeroCuenta = Convert.ToInt32(dr["numeroCuenta"]),
                             Saldo = Convert.ToDecimal(dr["saldo"]),
                             Descripcion = dr["descripcion"].ToString(),
-                            FechaAlta = DateOnly.Parse(Convert.ToDateTime(dr["fechaAlta"].ToString()).ToString("dd/MM/yyyy"))
+                            FechaAlta = DateOnly.ParseExact(Convert.ToDateTime(dr["fechaAlta"]).ToString("dd/MM/yyyy"), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
+                                                                                                                                                                                          
                     });
                     }
                 }
@@ -71,7 +72,7 @@ namespace TP_Cripto.Datos
                         oCuenta.NumeroCuenta = Convert.ToInt32(dr["numeroCuenta"]);
                         oCuenta.Saldo = Convert.ToDecimal(dr["saldo"]);
                         oCuenta.Descripcion = dr["descripcion"].ToString();
-                        oCuenta.FechaAlta = DateOnly.Parse(Convert.ToDateTime(dr["fechaAlta"].ToString()).ToString("dd/MM/yyyy"));
+                        oCuenta.FechaAlta = DateOnly.ParseExact(Convert.ToDateTime(dr["fechaAlta"]).ToString("dd/MM/yyyy"), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }
                 }
 

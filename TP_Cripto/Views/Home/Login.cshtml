@@ -6,7 +6,7 @@
 <body class=" p-0 pb-5 m-0 main-bg ">
     <div class="ps-5 pe-5">
 
-        <div class="card mt-5 mb-5 ms-auto me-auto col-6">
+        <div class="card mt-5 mb-5 ms-auto me-auto col-12 col-sm-8 col-md-6">
 
             <h5 class="card-header bg-dark" style="color:white">
                 @ViewData["Title"]
@@ -33,8 +33,11 @@
                         <span validation-for="clave" class="text-danger"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                    <a asp-action="Index" asp-controller="Home" class="btn btn-danger"> Cancelar</a>
+                    <div class="d-flex flex-column flex-sm-row ">
+
+                    <button type="submit" class="btn btn-primary m-2">Ingresar</button>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-danger m-2"> Cancelar</a>
+                    </div>
                 </form>
 
             </div>

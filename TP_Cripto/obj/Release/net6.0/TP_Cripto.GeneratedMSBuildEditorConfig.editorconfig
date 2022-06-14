@@ -1,0 +1,76 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TP_Cripto
+build_property.RootNamespace = TP_Cripto
+build_property.ProjectDir = S:\Curso .net Softek\Proyecto Softtek\Proyecto-Softtek-2022\TP_Cripto\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = S:\Curso .net Softek\Proyecto Softtek\Proyecto-Softtek-2022\TP_Cripto
+build_property._RazorSourceGeneratorDebug = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/NuevaCuenta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXE51ZXZhQ3VlbnRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/NuevaCuenta2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXE51ZXZhQ3VlbnRhMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Home/Perfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJmaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Home/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/_Layout_login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-a4aqlu32i0
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Shared/_Layout_logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfbG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-3n3r00w180

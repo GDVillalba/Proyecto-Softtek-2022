@@ -96,7 +96,7 @@ namespace TP_Cripto.Controllers
 
             if (respuesta)
             {
-                TempData["Respuesta"] = new String("Resgistrado con Exito");
+                TempData["Respuesta"] = new String("Actualizado con Exito");
                 return View();
             }
 

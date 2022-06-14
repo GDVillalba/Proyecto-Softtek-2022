@@ -59,8 +59,10 @@
                             <span asp-validation-for=Telefono class="text-danger"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
-                        <a asp-action="Index" asp-controller="Home" class="btn btn-danger"> Cancelar</a>
+                        <div class="d-flex flex-column flex-sm-row ">
+                            <button type="submit" class="btn btn-primary m-2">Aceptar</button>
+                            <a asp-action="Index" asp-controller="Home" class="btn btn-danger m-2"> Cancelar</a>
+                        </div>
                     </form>
 
                 </div>

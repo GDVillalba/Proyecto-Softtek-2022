@@ -41,3 +41,12 @@ begin
 	delete from Moneda where id = @id
 end
 go
+
+create procedure ValidarMoneda(
+@idMoneda int
+)
+as
+begin
+	select * from Moneda where id = @idMoneda
+end
+go

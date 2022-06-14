@@ -1,0 +1,29 @@
+//Hay que configurar la cadena de conexion a la base de datos sql server en el archivo "appsettings.json"
+
+//Si es local 
+{
+  "ConnectionStrings": {
+    "CadenaSQL": "Data Source = xxxxxxx; Initial Catalog=xxxxxxx; Integrated Security=true"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+//Si es remota
+{
+  "ConnectionStrings": {
+    "CadenaSQL": "Data Source =xxxxxxxxxx; Initial Catalog=xxxxxxx ;user id=xxxxxxxx ;pwd=xxxxxxxx ;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
