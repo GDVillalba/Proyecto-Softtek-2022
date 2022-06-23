@@ -6,11 +6,12 @@
     <title>@ViewData["Title"] - TP_Cripto</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <link rel="stylesheet" href="~/TP_Cripto.styles.css" asp-append-version="true" />
 </head>
 <body style="min-width:330px">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-0">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom-0 box-shadow mb-0">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TP_Cripto</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -43,20 +44,25 @@
             </div>
         </nav>
     </header>
-    <div style="border-bottom: 0px solid #fff; justify-content:center">
-        <main role="main" class="pb-0 justify-content-center" >
+    <div style="border-bottom: 0px solid #fff; justify-content:center;">
+        <main role="main" class="pb-2 pb-md-0 justify-content:center">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-black d-flex ps-5 pe-5 justify-content-around">
-         <div class="container d-flex ">
-            Hecho por Guillermo Villalba "https://github.com/GDVillalba"
+    <footer class=" border-top-0 footer text-muted bg-black lh-base d-flex flex-md-row flex-column flex-wrap ps-5 pe-5 pt-md-4 pt-3 pb-md-4 pb-3 m-0 align-items-center  justify-content-between ">
+
+        <div class="d-flex flex-nowrap">
+            Hecho por Guillermo Villalba &nbsp;
+            <a class="text-white" href="https://github.com/GDVillalba">
+                https://github.com/GDVillalba
+            </a>
         </div>
-        <div class="container d-flex justify-content-end pe-5">
+        <div class="">
             &copy; 2022 - TP_Cripto <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -126,3 +126,124 @@ begin
 	select * from Cuenta where alias = @alias
 end
 go
+
+
+
+
+
+
+
+
+CREATE TABLE [dbo].[Movimiento]
+(
+	[id]           INT              IDENTITY (1, 1) NOT NULL,
+    [idCuenta]    INT              NOT NULL,
+    [debito]     NUMERIC (38, 10) DEFAULT ((0)) NOT NULL,
+    [credito]     NUMERIC (38, 10) DEFAULT ((0)) NOT NULL,
+    [saldo]        NUMERIC (38, 10) DEFAULT ((0)) NOT NULL,
+    [descripcion]  VARCHAR (60)     NULL ,
+    [fecha]    DATE             DEFAULT (getdate()) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+	CONSTRAINT [FK_Cuenta_ToCuenta] FOREIGN KEY ([idCuenta]) REFERENCES [dbo].[Cuenta] ([id])
+)
+go
+
+ALTER PROCEDURE Depositar
+(
+     @idCuenta int
+    , @deposito numeric(38,10)
+	,@saldo numeric(38,10)
+	, @descripcion varchar(60)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    SAVE TRANSACTION MySavePoint;
+
+    BEGIN TRY
+        update Cuenta set saldo=@saldo  where id=@idCuenta
+
+		INSERT INTO Movimiento
+            (
+            idCuenta
+            ,credito
+            ,saldo
+            ,descripcion
+            )
+        VALUES (
+            @idCuenta
+            , @deposito
+            , @saldo
+            , @descripcion
+            );
+
+        COMMIT TRANSACTION 
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+        BEGIN
+            ROLLBACK TRANSACTION MySavePoint; -- rollback to MySavePoint
+        END
+    END CATCH
+END;
+GO
+
+
+CREATE PROCEDURE Extraer
+(
+     @idCuenta int
+    , @extraccion numeric(38,10)
+	,@saldo numeric(38,10)
+	, @descripcion varchar(60)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    SAVE TRANSACTION MySavePoint;
+
+    BEGIN TRY
+        update Cuenta set saldo=@saldo  where id=@idCuenta
+
+		INSERT INTO Movimiento
+            (
+            idCuenta
+            ,debito
+            ,saldo
+            ,descripcion
+            )
+        VALUES (
+            @idCuenta
+            , @extraccion
+            , @saldo
+            , @descripcion
+            );
+
+        COMMIT TRANSACTION 
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+        BEGIN
+            ROLLBACK TRANSACTION MySavePoint; -- rollback to MySavePoint
+        END
+    END CATCH
+END;
+GO
+
+
+create procedure ListarMovimientosCuenta(
+@idCuenta int)
+as
+begin
+	select * from Movimiento
+	WHERE idCuenta=@idCuenta
+end
+go
+
+create procedure ObtenerMovimiento(
+@id int)
+as
+begin
+	select * from Movimiento
+	WHERE id=@id
+end
+go

@@ -1,0 +1,82 @@
+﻿@using TP_Cripto.Models
+@model List<ModelMovimiento>
+
+@{
+    ViewData["Title"] = "Movimientos";
+}
+
+<partial name="~/Views/Shared/_Notification.cshtml" /> @*Partial view, added for notifications*@
+
+<body class=" p-0 pb-5 m-0 main-bg ">
+    <div class="ps-5 pe-5 pb-4">
+
+        <div class="card col-md-10 m-auto " style="background:none; border:none">
+            <h2 >@ViewData["Title"]</h2>
+        </div>
+
+
+        @if (@ViewBag.Usuario != "" && @ViewBag.Usuario != null)
+        {
+            Layout = "~/Views/Shared/_Layout_logout.cshtml";
+
+            <div class="col-md-10 m-auto">
+
+                <div class="bg-dark p-4 mb-1 d-flex justify-content-between" style="color:white; height:100%;border-radius:1em">
+
+                    <h5 class="card-header">
+                        Usuario: @ViewBag.Usuario
+                    </h5>
+                    <a asp-action="Index" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Volver</a>
+                </div>
+
+            </div>
+
+            <hr />
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-10 mb-2 ms-auto me-auto" style="min-height:12em">
+
+                    <div class="bg-dark  p-4 mb-2 d-flex flex-column flex-sm-row justify-content-between" style="color:white; border-radius:3em; height:100%">
+                        <div class=" d-flex flex-column flex-nowrap justify-content-between">
+                            <div>
+
+                            <ul class=" list-unstyled" style="min-height:7em">
+                                <li>Fecha: @item.Fecha</li>
+                                <li>Descripcion: @item.Descripcion</li>
+                                <li>Debito: @item.Debito.ToString("0.00")</li>
+                                <li>Credito: @item.Credito.ToString("0.00")</li>
+                                <li>Saldo: @item.Saldo.ToString("0.00")</li>
+                            </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+
+
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_Layout_login.cshtml";
+
+            <div class="col-md-10 m-auto">
+
+            <div class="bg-dark p-1 mb-1" style="color:white; height:100%;border-radius:1em">
+
+                <h5 class="p-5 ">
+                    Debe ingresar al sistema para visualizar cuentas.
+                    <br>
+                    Cuenta de prueba usuario: "usuario1" , clave: "1234".
+                </h5>
+
+            </div>
+
+        </div>
+
+        }
+    </div>
+</body>

@@ -11,6 +11,7 @@ namespace TP_Cripto.Controllers
         ClienteDatos clienteDatos = new ClienteDatos();
         CuentaDatos cuentaDatos = new CuentaDatos();
         MonedaDatos monedaDatos = new MonedaDatos();
+        MovimientoDatos movimientoDatos = new MovimientoDatos();
 
         public IActionResult Index()
         {
@@ -164,6 +165,122 @@ namespace TP_Cripto.Controllers
             }
 
             return View(oCuenta);
+        }
+
+        public IActionResult Depositar(int idCuenta)
+        {
+            if (HttpContext.Session.GetString("usuario") == null)
+            {
+                HttpContext.Session.SetInt32("idCliente", 0);
+                HttpContext.Session.SetString("usuario", "");
+            }
+
+            //Get value from Session object.
+            ViewBag.Usuario = HttpContext.Session.GetString("usuario");
+
+            ModelCuenta oCuenta;
+            oCuenta = cuentaDatos.Obtener(idCuenta);
+
+            return View(oCuenta);
+        }
+
+        [HttpPost]
+        public IActionResult Depositar(string deposito, int idCuenta)
+        {
+            Decimal credito = Decimal.Parse( deposito , System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+            if(credito <= 0)
+            {
+                TempData["success"] = "El deposito debe ser mayor a cero";
+                return RedirectToAction("Depositar" , new { idCuenta = idCuenta } );
+            }
+
+            ModelCuenta oCuenta = new ModelCuenta();
+            oCuenta = cuentaDatos.Obtener(idCuenta);
+
+            ModelMovimiento oMovimiento = new ModelMovimiento();
+            oMovimiento.IdCuenta = idCuenta;
+            oMovimiento.Credito = credito;
+            oMovimiento.Saldo = oCuenta.Saldo + credito;
+            oMovimiento.Descripcion = $"Deposito {credito.ToString("0.00")} .";
+
+            if(movimientoDatos.Depositar(oMovimiento))
+            {
+                TempData["success"] = "Depositado " + credito.ToString("0.00");
+                return RedirectToAction("Index");
+            }
+
+            TempData["error"] = "Error al depositar ";
+
+            return RedirectToAction("Depositar", new { idCuenta = idCuenta });
+        }
+
+        public IActionResult Extraer(int idCuenta)
+        {
+            if (HttpContext.Session.GetString("usuario") == null)
+            {
+                HttpContext.Session.SetInt32("idCliente", 0);
+                HttpContext.Session.SetString("usuario", "");
+            }
+
+            //Get value from Session object.
+            ViewBag.Usuario = HttpContext.Session.GetString("usuario");
+
+            ModelCuenta oCuenta;
+            oCuenta = cuentaDatos.Obtener(idCuenta);
+
+            return View(oCuenta);
+        }
+
+        [HttpPost]
+        public IActionResult Extraer(string extraccion, int idCuenta)
+        {
+            Decimal debito = Decimal.Parse(extraccion, System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+            if (debito <= 0)
+            {
+                TempData["success"] = "La extraccion debe ser mayor a cero";
+                return RedirectToAction("Extraer", new { idCuenta = idCuenta });
+            }
+
+            ModelCuenta oCuenta = new ModelCuenta();
+            oCuenta = cuentaDatos.Obtener(idCuenta);
+
+            if (debito > oCuenta.Saldo )
+            {
+                TempData["success"] = "La extraccion no debe ser mayor al saldo en cuenta";
+                return RedirectToAction("Extraer", new { idCuenta = idCuenta });
+            }
+
+            ModelMovimiento oMovimiento = new ModelMovimiento();
+            oMovimiento.IdCuenta = idCuenta;
+            oMovimiento.Debito = debito;
+            oMovimiento.Saldo = oCuenta.Saldo - debito;
+            oMovimiento.Descripcion = $"Extraccion {debito.ToString("0.00")} .";
+
+            if (movimientoDatos.Extraer(oMovimiento))
+            {
+                TempData["success"] = "Extraido " + debito.ToString("0.00");
+                return RedirectToAction("Index");
+            }
+
+            TempData["error"] = "Error al depositar ";
+
+            return RedirectToAction("Extraer", new { idCuenta = idCuenta });
+        }
+
+        public IActionResult Movimientos(int idCuenta)
+        {
+            if (HttpContext.Session.GetString("usuario") == null)
+            {
+                HttpContext.Session.SetInt32("idCliente", 0);
+                HttpContext.Session.SetString("usuario", "");
+            }
+
+            //Get value from Session object.
+            ViewBag.Usuario = HttpContext.Session.GetString("usuario");
+
+            var oLista = movimientoDatos.ListarMovimientos(idCuenta);
+
+            return View(oLista);
         }
 
         public IActionResult FaltaImplementar()

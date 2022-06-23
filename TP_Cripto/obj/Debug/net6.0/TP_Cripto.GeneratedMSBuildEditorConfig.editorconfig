@@ -15,8 +15,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = S:\Curso .net Softek\Proyecto Softtek\Proyecto-Softtek-2022\TP_Cripto
 build_property._RazorSourceGeneratorDebug = 
 
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/Depositar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXERlcG9zaXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/Extraer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXEV4dHJhZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/Movimientos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXE1vdmltaWVudG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [S:/Curso .net Softek/Proyecto Softtek/Proyecto-Softtek-2022/TP_Cripto/Views/Cuenta/NuevaCuenta.cshtml]
