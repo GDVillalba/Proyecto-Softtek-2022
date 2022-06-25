@@ -1,0 +1,100 @@
+﻿@using TP_Cripto.Models
+@model ModelCuenta
+
+@{
+    ViewData["Title"] = "Transferir";
+}
+
+<partial name="~/Views/Shared/_Notification.cshtml" /> @*Partial view, added for notifications*@
+
+<body class=" p-0 pb-5 m-0 main-bg ">
+    <div class="ps-5 pe-5 pb-4">
+
+        <div class="card col-md-10 m-auto " style="background:none; border:none">
+            <h2 >@ViewData["Title"]</h2>
+        </div>
+
+
+        @if (@ViewBag.Usuario != "" && @ViewBag.Usuario != null)
+        {
+            Layout = "~/Views/Shared/_Layout_logout.cshtml";
+
+            <div class="col-md-10 m-auto">
+
+                <div class="bg-dark p-4 mb-1 d-flex justify-content-between" style="color:white; height:100%;border-radius:1em">
+
+                    <h5 class="card-header">
+                        Usuario: @ViewBag.Usuario
+                    </h5>
+                </div>
+
+            </div>
+
+            <hr />
+
+
+            <div class="col-md-10 mb-2 ms-auto me-auto" style="min-height:17em">
+
+                    <form method="post" asp-action="Transferir">
+                    <div class="bg-dark  p-4 mb-2 d-flex flex-column flex-sm-row justify-content-between" style="color:white; border-radius:3em; height:100%">
+                        <div class=" d-flex flex-column flex-nowrap justify-content-between">
+                            <div>
+
+                            <h2>@Model.Descripcion</h2>
+
+                            <ul class=" list-unstyled" style="min-height:7em">
+                                    <li>Moneda: @Model.Moneda</li>
+                                    <li>Saldo: @Model.Saldo.ToString("0.00000000")</li>
+                                    <li>Cuenta Destino:</li>
+                                    <li>
+                                        <select name="idCuentaDestino" class="form-select form-control" aria-label="Default select example">
+                                            <option selected>Seleccione una cuenta</option>
+                                            @foreach (var item in (List<SelectListItem>)ViewBag.Cuentas)
+                                            {
+                                                <option value=@item.Value>@item.Text</option>
+                                            }
+                                        </select>
+                                    </li>
+                                    <li>Monto:</li>
+                                    <li>
+                                        <input asp-for=@Model.Id name="idCuenta" type="hidden" class="form-control" />
+                                        <input id="monto" name="monto" type="text" maxlength=22 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/(\.\d{2}).+/g, '$1');" class="form-control" required>
+
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="  col-sm-2 d-flex flex-column flex-nowrap justify-content-evenly">
+                        <button type="submit" class="btn btn-light mt-2 mt-sm-2">Aceptar</button>
+                        <a asp-action="Index" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Cancelar</a>
+                    </div>
+
+                </div>
+                    </form>
+            </div>
+
+            
+
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_Layout_login.cshtml";
+
+            <div class="col-md-10 m-auto">
+
+            <div class="bg-dark p-1 mb-1" style="color:white; height:100%;border-radius:1em">
+
+                <h5 class="p-5 ">
+                    Debe ingresar al sistema para visualizar cuentas.
+                    <br>
+                    Cuenta de prueba usuario: "usuario1" , clave: "1234".
+                </h5>
+
+            </div>
+
+        </div>
+
+        }
+    </div>
+</body>

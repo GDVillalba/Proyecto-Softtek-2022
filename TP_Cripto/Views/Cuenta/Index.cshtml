@@ -57,7 +57,7 @@
                                     <li>Numero de Cuenta: @item.NumeroCuenta</li>
                                 }
 
-                                <li>Saldo: @item.Saldo.ToString("0.00")</li>
+                                <li>Saldo: @item.Saldo.ToString("0.00000000")</li>
                             </ul>
                             </div>
                             <a asp-action="Movimientos" asp-controller="Cuenta" asp-route-idCuenta=@item.Id class="btn btn-light">Movimientos</a>
@@ -65,7 +65,7 @@
                         <div class="  col-sm-2 d-flex flex-column flex-nowrap justify-content-evenly">
                             <a asp-action="Depositar" asp-controller="Cuenta" asp-route-idCuenta=@item.Id class="btn btn-light mt-2 mt-sm-2"> Depositar</a>
                             <a asp-action="Extraer" asp-controller="Cuenta" asp-route-idCuenta=@item.Id class="btn btn-light mt-2 mt-sm-2">Extraer</a>
-                            <a asp-action="FaltaImplementar" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Transferir</a>
+                            <a asp-action="Transferir" asp-controller="Cuenta" asp-route-idCuenta=@item.Id class="btn btn-light mt-2 mt-sm-2">Transferir</a>
                         </div>
 
                     </div>

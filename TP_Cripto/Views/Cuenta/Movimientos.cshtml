@@ -23,10 +23,19 @@
 
                 <div class="bg-dark p-4 mb-1 d-flex justify-content-between" style="color:white; height:100%;border-radius:1em">
 
-                    <h5 class="card-header">
-                        Usuario: @ViewBag.Usuario
-                    </h5>
-                    <a asp-action="Index" asp-controller="Cuenta" class="btn btn-light mt-2 mt-sm-2">Volver</a>
+                    <ul class=" list-unstyled">
+                        <li>
+                            <h5 class="card-header">
+                                Usuario: @ViewBag.Usuario
+                            </h5>
+                        </li>
+                        <li>
+                            <h5 class="card-header">
+                                Cuenta: @ViewBag.Cuenta
+                            </h5>
+                        </li>
+                    </ul>
+                    <a asp-action="Index" asp-controller="Cuenta" class="btn btn-light mt-auto mb-auto">Volver</a>
                 </div>
 
             </div>
@@ -44,9 +53,9 @@
                             <ul class=" list-unstyled" style="min-height:7em">
                                 <li>Fecha: @item.Fecha</li>
                                 <li>Descripcion: @item.Descripcion</li>
-                                <li>Debito: @item.Debito.ToString("0.00")</li>
-                                <li>Credito: @item.Credito.ToString("0.00")</li>
-                                <li>Saldo: @item.Saldo.ToString("0.00")</li>
+                                <li>Debito: @item.Debito.ToString("0.00000000")</li>
+                                <li>Credito: @item.Credito.ToString("0.00000000")</li>
+                                <li>Saldo: @item.Saldo.ToString("0.00000000")</li>
                             </ul>
                             </div>
                         </div>

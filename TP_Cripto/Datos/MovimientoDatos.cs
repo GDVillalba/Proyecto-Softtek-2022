@@ -134,6 +134,41 @@ namespace TP_Cripto.Datos
             return respuesta;
         }
 
+        public bool TransferenciaPropia(ModelCuenta cuentaOrigen, Decimal montoOrigen, ModelCuenta cuentaDestino, Decimal montoDestino)
+        {
+            bool respuesta = false;
+            string descripcionOrigen = "Transferencia a cuenta " + cuentaDestino.Descripcion ;
+            string descripcionDestino = "Transferencia de cuenta " + cuentaOrigen.Descripcion;
+
+            try
+            {
+                var cn = new Conexion();
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("TransferenciaPropia", conexion);
+                    cmd.Parameters.AddWithValue("idCuentaOrigen", cuentaOrigen.Id);
+                    cmd.Parameters.AddWithValue("montoOrigen", montoOrigen);
+                    cmd.Parameters.AddWithValue("saldoOrigen", cuentaOrigen.Saldo - montoOrigen);
+                    cmd.Parameters.AddWithValue("descripcionOrigen", descripcionOrigen);
+                    cmd.Parameters.AddWithValue("idCuentaDestino", cuentaDestino.Id);
+                    cmd.Parameters.AddWithValue("montoDestino", montoDestino);
+                    cmd.Parameters.AddWithValue("saldoDestino", cuentaDestino.Saldo + montoDestino);
+                    cmd.Parameters.AddWithValue("descripcionDestino", descripcionDestino);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                respuesta = true;
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+                respuesta = false;
+            }
+
+            return respuesta;
+        }
 
     }
 }

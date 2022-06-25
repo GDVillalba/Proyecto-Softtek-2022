@@ -247,3 +247,63 @@ begin
 	WHERE id=@id
 end
 go
+
+CREATE PROCEDURE TransferenciaPropia
+(
+     @idCuentaOrigen int
+    , @montoOrigen numeric(38,10)
+	,@saldoOrigen numeric(38,10)
+	, @descripcionOrigen varchar(60)
+	,@idCuentaDestino int
+    , @montoDestino numeric(38,10)
+	,@saldoDestino numeric(38,10)
+	, @descripcionDestino varchar(60)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    SAVE TRANSACTION MySavePoint;
+
+    BEGIN TRY
+        update Cuenta set saldo=@saldoOrigen  where id=@idCuentaOrigen
+
+		INSERT INTO Movimiento
+            (
+            idCuenta
+            ,debito
+            ,saldo
+            ,descripcion
+            )
+        VALUES (
+            @idCuentaOrigen
+            , @montoOrigen
+            , @saldoOrigen
+            , @descripcionOrigen
+            );
+
+		update Cuenta set saldo=@saldoDestino  where id=@idCuentaDestino
+
+		INSERT INTO Movimiento
+            (
+            idCuenta
+            ,credito
+            ,saldo
+            ,descripcion
+            )
+        VALUES (
+            @idCuentaDestino
+            , @montoDestino
+            , @saldoDestino
+            , @descripcionDestino
+            );
+
+        COMMIT TRANSACTION 
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+        BEGIN
+            ROLLBACK TRANSACTION MySavePoint; -- rollback to MySavePoint
+        END
+    END CATCH
+END;
+GO

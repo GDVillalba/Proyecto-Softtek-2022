@@ -267,7 +267,7 @@ namespace TP_Cripto.Controllers
             return RedirectToAction("Extraer", new { idCuenta = idCuenta });
         }
 
-        public IActionResult Movimientos(int idCuenta)
+        public IActionResult Transferir(int idCuenta)
         {
             if (HttpContext.Session.GetString("usuario") == null)
             {
@@ -277,6 +277,99 @@ namespace TP_Cripto.Controllers
 
             //Get value from Session object.
             ViewBag.Usuario = HttpContext.Session.GetString("usuario");
+
+            ModelCuenta oCuenta;
+            oCuenta = cuentaDatos.Obtener(idCuenta);
+
+            //Traigo todas las cuentas
+            var oLista = cuentaDatos.ListarCuentaCliente((int)Convert.ToInt32(HttpContext.Session.GetInt32("idCliente")));
+
+            //Creo un objeto SelectListItem para cargar las cuentas propias a las que puedo transferir
+            #region ViewBag
+            List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> cuentas = new List<SelectListItem>();
+
+            //Cargo todas las cuentas menos la cuenta origen de la transferencia
+            foreach (var o in oLista)
+            {
+                if(o.Id != idCuenta)
+                {
+                cuentas.Add(new SelectListItem() { Text = $"{o.Descripcion}", Value = $"{o.Id}" });
+                }
+
+            }
+
+            //Cargo en viewbag el SelectListItem para pasarlo a la vista
+            ViewBag.Cuentas = cuentas;
+            #endregion
+
+            return View(oCuenta);
+        }
+
+        [HttpPost]
+        public IActionResult Transferir(string monto, int idCuenta, int idCuentaDestino)
+        {
+            Decimal montoOrigen = Decimal.Parse(monto, System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+
+            //verifico que el monto sea mayor a cero
+            if (montoOrigen <= 0)
+            {
+                TempData["success"] = "El monto debe ser mayor a cero";
+                return RedirectToAction("Transferir", new { idCuenta = idCuenta });
+            }
+
+            ModelCuenta oCuentaOrigen = new ModelCuenta();
+            oCuentaOrigen = cuentaDatos.Obtener(idCuenta);
+
+            //verifico que la cuenta tenga saldo
+            if (montoOrigen > oCuentaOrigen.Saldo)
+            {
+                TempData["success"] = "El monto no debe ser mayor al saldo en cuenta";
+                return RedirectToAction("Transferir", new { idCuenta = idCuenta });
+            }
+
+            //verifico que la cuenta destino exista
+            if ( idCuentaDestino == 0)
+            {
+                TempData["success"] = "Debe seleccionar una cuenta";
+                return RedirectToAction("Transferir", new { idCuenta = idCuenta });
+            }
+
+            ModelCuenta oCuentaDestino = new ModelCuenta();
+            oCuentaDestino = cuentaDatos.Obtener(idCuentaDestino);
+
+           //convierto la moneda de origen a la de destino 
+            Decimal montoDestino = ConvertirMoneda(montoOrigen, oCuentaOrigen.IdMoneda, oCuentaDestino.IdMoneda);
+
+            //realizo la transferencia en la base de datos
+            if (movimientoDatos.TransferenciaPropia(oCuentaOrigen,montoOrigen, oCuentaDestino, montoDestino))
+            {
+                TempData["success"] = "Transferencia " + montoOrigen.ToString("0.00") + "; destino: " + montoDestino;
+                return RedirectToAction("Index");
+            }
+
+            //aviso si hay error
+            TempData["error"] = "Error al transferir ";            
+
+            return RedirectToAction("Transferir", new { idCuenta = idCuenta });
+        }
+
+
+        public IActionResult Movimientos(int idCuenta)
+        {
+            if (HttpContext.Session.GetString("usuario") == null)
+            {
+                HttpContext.Session.SetInt32("idCliente", 0);
+                HttpContext.Session.SetString("usuario", "");
+            }
+
+
+            //Seteo valor desde el objeto Session.
+            ViewBag.Usuario = HttpContext.Session.GetString("usuario");
+
+            ModelCuenta oCuenta = cuentaDatos.Obtener(idCuenta);
+
+            //paso la descripcion de la cuenta
+            ViewBag.Cuenta = oCuenta.Descripcion;
 
             var oLista = movimientoDatos.ListarMovimientos(idCuenta);
 
@@ -288,6 +381,14 @@ namespace TP_Cripto.Controllers
             TempData["success"] = "Falta implementar Funcionalidad" ;
 
             return RedirectToAction("Index");
+        }
+
+        public Decimal ConvertirMoneda(Decimal monto, int idMonedaOrigen, int idMonedaDestino)
+        {
+            ModelMoneda monedaOrigen = monedaDatos.Obtener(idMonedaOrigen);
+            ModelMoneda monedaDestino = monedaDatos.Obtener(idMonedaDestino);
+            Decimal result = monto * monedaDestino.CotizacionEnUSD / monedaOrigen.CotizacionEnUSD;
+            return result;
         }
       
     }
